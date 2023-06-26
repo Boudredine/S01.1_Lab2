@@ -1,14 +1,8 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
- 
-}
-@using ZombieParty.Models;
+﻿@using ZombieParty.Models;
 @model ZombieParty.Models.ZombieType;
-<form method="post">
+<form method="post" asp-action="Create">
     <div class="border p-3">
-        <div class="text-danger"></div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group row">
             <h2 class="text-info pl-3">Zombie Type</h2>
             <hr />
@@ -18,10 +12,11 @@
             <div class="col-8">
                 <div class="form-group row">
                     <div class="col-2">
-                        <label>@Model.TypeName</label>
+                        <label asp-for="TypeName"></label>
                     </div>
                     <div class="col-8">
-                        TYPENAME
+                        <input asp-for="TypeName" class="form-control" />
+                        <span asp-validation-for="TypeName" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -31,7 +26,7 @@
                             <input type="submit" class="btn btn-info w-100" value="Create" />
                         </div>
                         <div class="col">
-                            <a class="btn btn-success w-100">Back to list</a>
+                            <a asp-action="Index" class="btn btn-success w-100">Back to list</a>
                         </div>
                     </div>
                 </div>
@@ -40,4 +35,12 @@
             <div class="col-4">
             </div>
         </div>
+    </div>
 </form>
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
