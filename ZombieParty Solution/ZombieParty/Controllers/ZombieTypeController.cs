@@ -20,6 +20,16 @@ namespace ZombieParty.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Create(Models.ZombieType zombieType)
+        {
+            if (ModelState.IsValid)
+            {
+                // Ajouter à la BD
+            }
+
+            return this.View(zombieType);
+        }
 
     }
 }
